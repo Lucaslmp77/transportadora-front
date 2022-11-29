@@ -67,7 +67,7 @@
         align-items: center;
         flex-direction: column;
         form {
-            padding: 20px 30px;
+            padding: 30px 30px;
             display: flex;
             align-items: center;
             flex-direction: column;
@@ -77,10 +77,14 @@
             h1 {
                 font-size: 36px;
                 color: black;
+                margin-bottom: 15px;
             }
             .primeiraColuna {
                 display: flex;
                 gap: 10px;
+                .label {
+                    display: flex;
+                }
             }
         }
     }
