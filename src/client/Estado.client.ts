@@ -8,7 +8,7 @@ export class EstadoClient {
         this.axiosClient = axios.create({
             baseURL: 'http://localhost:8080/api/estado',
             headers: {
-                'Content-type' : 'aplication/json'
+                'Content-type' : 'application/json'
             }
         })
     }
@@ -26,6 +26,15 @@ export class EstadoClient {
     public async findAll() : Promise<Estado[]> {
         try {
             return (await this.axiosClient.get<Estado[]>(``)).data
+        }
+        catch(error:any) {
+            return Promise.reject(error.response)
+        }
+    }
+
+    public async findByEstadosAtivos() : Promise<Estado[]> {
+        try {
+            return (await this.axiosClient.get<Estado[]>(`/ativos`)).data
         }
         catch(error:any) {
             return Promise.reject(error.response)

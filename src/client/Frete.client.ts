@@ -2,13 +2,14 @@ import { Frete } from "@/model/Frete";
 import axios, { AxiosInstance } from "axios";
 
 export class FreteClient {
+    
     private axiosClient: AxiosInstance
 
     constructor() {
         this.axiosClient = axios.create({
             baseURL: 'http://localhost:8080/api/frete',
             headers: {
-                'Content-type' : 'aplication/json'
+                'Content-type' : 'application/json'
             }
         })
     }
@@ -23,18 +24,17 @@ export class FreteClient {
 
     }
 
-    public async findAll() : Promise<Frete[]> {
+    listAll(): Promise<any> {
         try {
-            return (await this.axiosClient.get<Frete[]>(``)).data
-        }
-        catch(error:any) {
+            return this.axiosClient.get('')
+        } catch (error:any) {
             return Promise.reject(error.response)
         }
     }
 
     public async cadastrar(frete: Frete) : Promise<void> {
         try {
-            return (await this.axiosClient.post(``, frete)).data
+            return (await this.axiosClient.post('', frete)).data
         }
         catch(error:any) {
             return Promise.reject(error.response)

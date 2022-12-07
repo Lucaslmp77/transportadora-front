@@ -8,7 +8,7 @@ export class CaminhaoClient {
         this.axiosClient = axios.create({
             baseURL: 'http://localhost:8080/api/caminhao',
             headers: {
-                'Content-type' : 'aplication/json'
+                'Content-type' : 'application/json'
             }
         })
     }
@@ -26,6 +26,15 @@ export class CaminhaoClient {
     public async findAll() : Promise<Caminhao[]> {
         try {
             return (await this.axiosClient.get<Caminhao[]>(``)).data
+        }
+        catch(error:any) {
+            return Promise.reject(error.response)
+        }
+    }
+
+    public async findByCaminhoesAtivos() : Promise<Caminhao[]> {
+        try {
+            return (await this.axiosClient.get<Caminhao[]>(`/ativos`)).data
         }
         catch(error:any) {
             return Promise.reject(error.response)

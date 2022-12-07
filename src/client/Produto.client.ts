@@ -8,7 +8,7 @@ export class ProdutoClient {
         this.axiosClient = axios.create({
             baseURL: 'http://localhost:8080/api/produto',
             headers: {
-                'Content-type' : 'aplication/json'
+                'Content-type' : 'application/json'
             }
         })
     }
@@ -23,9 +23,18 @@ export class ProdutoClient {
 
     }
 
-    public async findAll() : Promise<Produto[]> {
+    public async listAll() : Promise<Produto[]> {
         try {
             return (await this.axiosClient.get<Produto[]>(``)).data
+        }
+        catch(error:any) {
+            return Promise.reject(error.response)
+        }
+    }
+
+    public async findByProdutosAtivos() : Promise<Produto[]> {
+        try {
+            return (await this.axiosClient.get<Produto[]>(`/ativos`)).data
         }
         catch(error:any) {
             return Promise.reject(error.response)

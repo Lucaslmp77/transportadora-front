@@ -1,4 +1,4 @@
-export abstract class AbstractEntity {
+export class AbstractEntity {
     id!: number
     cadastrar!: Date
     alterar!: Date

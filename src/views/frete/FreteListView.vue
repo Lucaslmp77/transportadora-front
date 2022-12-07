@@ -2,83 +2,69 @@
     <div class="columnsFrete">
         <div class="columnFrete">
             <h1>LISTA DE FRETES</h1>
-            <router-link to="/cadastrar-frete"><button class="button is-primary is-focused">Cadastrar Frete</button></router-link>
         </div>
-        <table class="table is-bordered">
+
+        <router-link to="/cadastrar-frete"><button class="button is-primary is-focused">Cadastrar Frete</button></router-link>
+    
+        <table class="table is-bordered is-fullwidth">
             <thead>
                 <tr>
-                    <th>Num</th>
                     <th>Data</th>
                     <th>Status do frete</th>
                     <th>Cidade de Origem</th>
                     <th>Cidade de Destino</th>
                     <th>Caminhão (placa)</th>
+                    <th>Produto</th>
                     <th>Opções</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>1</th>
-                    <td>24/11/2022</td>
-                    <td>EM_TRANSPORTE</td>
-                    <td>Foz do Iguaçu</td>
-                    <td>Santa Catarina</td>
-                    <td>BRA2E19</td>
-                    <td><img class="icon-edit" src="@/assets/icon-edit.png" alt="icone editar"> <img src="@/assets/icon-delete.png" alt="icone delete"></td>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td>24/11/2022</td>
-                    <td>EM_TRANSPORTE</td>
-                    <td>Foz do Iguaçu</td>
-                    <td>Santa Catarina</td>
-                    <td>BRA2E19</td>
-                    <td><img class="icon-edit" src="@/assets/icon-edit.png" alt="icone editar"> <img src="@/assets/icon-delete.png" alt="icone delete"></td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>24/11/2022</td>
-                    <td>EM_TRANSPORTE</td>
-                    <td>Foz do Iguaçu</td>
-                    <td>Santa Catarina</td>
-                    <td>BRA2E19</td>
-                    <td><img class="icon-edit" src="@/assets/icon-edit.png" alt="icone editar"> <img src="@/assets/icon-delete.png" alt="icone delete"></td>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <td>24/11/2022</td>
-                    <td>EM_TRANSPORTE</td>
-                    <td>Foz do Iguaçu</td>
-                    <td>Santa Catarina</td>
-                    <td>BRA2E19</td>
-                    <td><img class="icon-edit" src="@/assets/icon-edit.png" alt="icone editar"> <img src="@/assets/icon-delete.png" alt="icone delete"></td>
-                </tr>
-                <tr>
-                    <th>5</th>
-                    <td>24/11/2022</td>
-                    <td>EM_TRANSPORTE</td>
-                    <td>Foz do Iguaçu</td>
-                    <td>Santa Catarina</td>
-                    <td>BRA2E19</td>
-                    <td><img class="icon-edit" src="@/assets/icon-edit.png" alt="icone editar"> <img src="@/assets/icon-delete.png" alt="icone delete"></td>
-                </tr>
-                <tr>
-                    <th>6</th>
-                    <td>24/11/2022</td>
-                    <td>EM_TRANSPORTE</td>
-                    <td>Foz do Iguaçu</td>
-                    <td>Santa Catarina</td>
-                    <td>BRA2E19</td>
-                    <td><img class="icon-edit" src="@/assets/icon-edit.png" alt="icone editar"> <img src="@/assets/icon-delete.png" alt="icone delete"></td>
-                </tr>
-                <tr>
-                    <th>7</th>
-                    <td>24/11/2022</td>
-                    <td>EM_TRANSPORTE</td>
-                    <td>Foz do Iguaçu</td>
-                    <td>Santa Catarina</td>
-                    <td>BRA2E19</td>
-                    <td><img class="icon-edit" src="@/assets/icon-edit.png" alt="icone editar"> <img src="@/assets/icon-delete.png" alt="icone delete"></td>
+                <tr v-for= 'item in freteList'>
+                    <th> {{ item.cadastrar }} </th>
+                    <th> 
+                        
+                        <span v-if="item.statusFrete === 'CARGA'" class="tag is-info"> Em Carga </span>
+                        <span v-if="item.statusFrete === 'EM_TRANSPORTE'" class="tag is-info"> Em Transporte </span>
+                        <span v-if="item.statusFrete === 'INTERROMPIDO'" class="tag is-warning"> Interrompido </span>
+                        <span v-if="item.statusFrete === 'DESCARGA'" class="tag is-primary"> Em Descarga </span>
+                        <span v-if="item.statusFrete === 'FATURADO'" class="tag is-success"> Faturado </span>
+                        <span v-if="item.statusFrete === 'CANCELADO'" class="tag is-danger"> Cancelado </span>
+
+                    </th>
+                    <th> {{ item.cidadeOrigem.nome }} </th>
+                    <th> {{ item.cidadeDestino.nome }} </th>
+                    <th> {{ item.caminhao.placa }} </th>
+                    <th> {{ item.produto.nome }} </th>
+                    <th>
+
+                        <div v-if="item.statusFrete ==='CARGA'">
+                            <button class="button is-small is-default">T</button> &nbsp;
+                            <button class="button is-small is-default">I</button> &nbsp;
+                            <button class="button is-small is-default">C</button>
+                        </div>
+                        <div v-if="item.statusFrete ==='EM_TRANSPORTE'">
+                            <button class="button is-small is-default">I</button> &nbsp;
+                            <button class="button is-small is-default">D</button>
+                        </div>
+                        <div v-if="item.statusFrete ==='INTERROMPIDO'">
+                            <button class="button is-small is-default">CR</button> &nbsp;
+                            <button class="button is-small is-default">T</button> &nbsp;
+                            <button class="button is-small is-default">C</button>
+                        </div>
+                        <div v-if="item.statusFrete ==='DESCARGA'">
+                            <button class="button is-small is-default">F</button>
+                        </div>
+                        <div v-if="item.statusFrete ==='FATURADO'">
+                            Sem ação
+                        </div>
+                        <div v-if="item.statusFrete ==='CANCELADO'">
+                            <button class="button is-small is-default">CR</button> &nbsp;
+                            <button class="button is-small is-default">I</button>
+                        </div>
+
+                    </th>
+                    <!-- @click="onClickPaginaDetalhar(item.id)" -->
+                    <!-- <th><button class="button is-warning is-focused">Detalhar</button></th> -->
                 </tr>
             </tbody>
         </table>
@@ -87,16 +73,9 @@
 
 <style scoped lang="scss">
     .columnsFrete {
-        table {
-            border: 1.5px solid black;
-            img {
-                cursor: pointer;
-            }
-        }
         .columnFrete {
             display: flex;
             align-items: center;
-            gap: 30px;
             h1 {
             font-size: 36px;
             color: black;
@@ -107,5 +86,35 @@
         justify-content: center;
         flex-direction: column;
         gap: 20px;
+        padding: 30px;
     }
 </style>
+
+<script lang="ts">
+    import { FreteClient } from '@/client/Frete.client'
+    import { Frete } from '@/model/Frete'
+    import { Component, Vue } from 'vue-property-decorator'
+
+    @Component
+    export default class FreteListView extends Vue {
+
+        private freteClient: FreteClient = new FreteClient()
+        public freteList: Frete[] = []
+
+        public mounted(): void {
+            this.listarFretes()
+        }
+
+        private listarFretes(): void {
+            this.freteClient.listAll().then(
+                success => {
+                    this.freteList = success.data
+                },
+                error => {
+                    console.log(error)
+                }
+            )
+        }
+    }
+
+</script>

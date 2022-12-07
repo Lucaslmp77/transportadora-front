@@ -22,4 +22,13 @@ export class Frete extends AbstractEntity {
     dataInicio!: Date
     dataFim!: Date
     observacao!: string
+
+    constructor() {
+        super()
+        this.cidadeOrigem = new Cidade
+        this.cidadeDestino = new Cidade
+        this.produto = new Produto
+        this.caminhao = new Caminhao
+        this.motorista = new Usuario
+    }
 }
