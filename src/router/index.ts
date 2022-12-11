@@ -23,6 +23,12 @@ const routes: Array<RouteConfig> = [
     path: '/cadastrar-frete',
     name: 'Cadastrar-Frete',
     component: () => import(/* webpackChunkName: "about" */ '../views/frete/CadastrarFreteView.vue')
+  },
+  {
+    path: '/status-frete/:id',
+    name: 'Status-Frete',
+    // props: (router) => ({ id: router.params.id }),
+    component: () => import(/* webpackChunkName: "about" */ '../views/frete/StatusFreteView.vue')
   }
 ]
 

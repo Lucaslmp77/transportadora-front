@@ -1,10 +1,22 @@
 <template>
-    <div class="columnsFrete">
-        <div class="columnFrete">
-            <h1>LISTA DE FRETES</h1>
-        </div>
+    <div class="columns is-fullwidth">
+        <h1>LISTA DE FRETES</h1>
 
-        <router-link to="/cadastrar-frete"><button class="button is-primary is-focused">Cadastrar Frete</button></router-link>
+        <div class="column">
+            <p class="control">
+                <input class="input" type="text" placeholder="Pesquise aqui...">
+            </p>
+            <p class="control">
+                <button class="button is-link">
+                    Buscar
+                </button>
+            </p>
+            <router-link to="/cadastrar-frete">
+                <button class="button is-primary is-focused">
+                    Cadastrar Frete
+                </button>
+            </router-link>    
+        </div>
     
         <table class="table is-bordered is-fullwidth">
             <thead>
@@ -15,6 +27,7 @@
                     <th>Cidade de Destino</th>
                     <th>Caminhão (placa)</th>
                     <th>Produto</th>
+                    <th>Alterar Status</th>
                     <th>Opções</th>
                 </tr>
             </thead>
@@ -38,7 +51,9 @@
                     <th>
 
                         <div v-if="item.statusFrete ==='CARGA'">
-                            <button class="button is-small is-default">T</button> &nbsp;
+                            
+                            <button @click="onClickPageUpdate(item.id)" class="button is-small is-default">T</button> &nbsp;
+                            
                             <button class="button is-small is-default">I</button> &nbsp;
                             <button class="button is-small is-default">C</button>
                         </div>
@@ -63,8 +78,8 @@
                         </div>
 
                     </th>
+                    <th><button class="button is-warning is-focused">Detalhar</button></th>
                     <!-- @click="onClickPaginaDetalhar(item.id)" -->
-                    <!-- <th><button class="button is-warning is-focused">Detalhar</button></th> -->
                 </tr>
             </tbody>
         </table>
@@ -72,13 +87,18 @@
 </template>
 
 <style scoped lang="scss">
-    .columnsFrete {
-        .columnFrete {
-            display: flex;
-            align-items: center;
-            h1 {
+    .columns {
+        h1 {
             font-size: 36px;
             color: black;
+        }
+        .column {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 30px;
+            .input {
+                border-color: blue;
             }
         }
         display: flex;
@@ -93,7 +113,9 @@
 <script lang="ts">
     import { FreteClient } from '@/client/Frete.client'
     import { Frete } from '@/model/Frete'
+    import router from '@/router'
     import { Component, Vue } from 'vue-property-decorator'
+    import { RouterLink } from 'vue-router'
 
     @Component
     export default class FreteListView extends Vue {
@@ -114,6 +136,10 @@
                     console.log(error)
                 }
             )
+        }
+
+        public onClickPageUpdate(id: number) {
+            router.push({path:`/status-frete/${id}` })
         }
     }
 

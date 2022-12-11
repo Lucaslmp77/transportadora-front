@@ -86,7 +86,7 @@
                 <router-link to="/frete"><button class="button is-link is-light">Voltar</button></router-link>
             </div>
             <div class="control">
-                <button @click="onClickCadastrar()" class="button is-primary is-focused">Salvar</button>
+                <button @click="onClickCadastrar()" class="button is-success is-focused">Salvar</button>
             </div>
         </div>
     </div>
