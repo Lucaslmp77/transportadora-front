@@ -52,34 +52,39 @@
 
                         <div v-if="item.statusFrete ==='CARGA'">
                             
-                            <button @click="onClickPageUpdate(item.id)" class="button is-small is-default">T</button> &nbsp;
+                            <button @click="onClickStatusEmTransporte(item.id)" class="button is-small is-default">T</button> &nbsp;
                             
-                            <button class="button is-small is-default">I</button> &nbsp;
-                            <button class="button is-small is-default">C</button>
+                            <button @click="onClickStatusInterrompido(item.id)" class="button is-small is-default">I</button> &nbsp;
+
+                            <button @click="onClickStatusCancelado(item.id)" class="button is-small is-default">C</button>
+
                         </div>
                         <div v-if="item.statusFrete ==='EM_TRANSPORTE'">
-                            <button class="button is-small is-default">I</button> &nbsp;
-                            <button class="button is-small is-default">D</button>
+                            <button @click="onClickStatusInterrompido(item.id)" class="button is-small is-default">I</button> &nbsp;
+                            <button @click="onClickStatusDescarga(item.id)" class="button is-small is-default">D</button>
                         </div>
                         <div v-if="item.statusFrete ==='INTERROMPIDO'">
-                            <button class="button is-small is-default">CR</button> &nbsp;
-                            <button class="button is-small is-default">T</button> &nbsp;
-                            <button class="button is-small is-default">C</button>
+
+                            <button @click="onClickStatusCarga(item.id)" class="button is-small is-default">CR</button> &nbsp;
+
+                            <button @click="onClickStatusEmTransporte(item.id)" class="button is-small is-default">T</button> &nbsp;
+
+                            <button @click="onClickStatusCancelado(item.id)" class="button is-small is-default">C</button>
+
                         </div>
                         <div v-if="item.statusFrete ==='DESCARGA'">
-                            <button class="button is-small is-default">F</button>
+                            <button  @click="onClickStatusFaturado(item.id)" class="button is-small is-default">F</button>
                         </div>
                         <div v-if="item.statusFrete ==='FATURADO'">
                             Sem ação
                         </div>
                         <div v-if="item.statusFrete ==='CANCELADO'">
-                            <button class="button is-small is-default">CR</button> &nbsp;
-                            <button class="button is-small is-default">I</button>
+                            <button @click="onClickStatusCarga(item.id)" class="button is-small is-default">CR</button> &nbsp;
+                            <button @click="onClickStatusInterrompido(item.id)" class="button is-small is-default">I</button>
                         </div>
 
                     </th>
-                    <th><button class="button is-warning is-focused">Detalhar</button></th>
-                    <!-- @click="onClickPaginaDetalhar(item.id)" -->
+                    <th><button @click="onClickDetalhar(item.id)" class="button is-warning is-focused">Detalhar</button></th>
                 </tr>
             </tbody>
         </table>
@@ -138,8 +143,32 @@
             )
         }
 
-        public onClickPageUpdate(id: number) {
-            router.push({path:`/status-frete/${id}` })
+        public onClickStatusEmTransporte(id: number) {
+            router.push({path:`/status-frete-transporte/${id}` })
+        }
+
+        public onClickStatusInterrompido(id: number) {
+            router.push({path:`/status-interrompido/${id}` })
+        }
+
+        public onClickStatusCancelado(id: number) {
+            router.push({path:`/status-cancelado/${id}` })
+        }
+
+        public onClickStatusFaturado(id: number) {
+            router.push({path:`/status-faturado/${id}` })
+        }
+
+        public onClickStatusCarga(id: number) {
+            router.push({path:`/status-carga/${id}` })
+        }
+
+        public onClickStatusDescarga(id: number) {
+            router.push({path:`/status-descarga/${id}` })
+        }
+
+        public onClickDetalhar(id: number) {
+            router.push({path:`/detalhar-frete/${id}` })
         }
     }
 

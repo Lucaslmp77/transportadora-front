@@ -17,6 +17,7 @@ export class Frete extends AbstractEntity {
     totalBrutoRecebidoNota!: number
     totalLiquidoRecebido!: number
     pesoInicial!: number
+    pesoFinal!: number
     pesoFinalTransportado!: number
     precoTonelada!: number
     dataInicio!: Date

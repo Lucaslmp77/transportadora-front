@@ -25,10 +25,39 @@ const routes: Array<RouteConfig> = [
     component: () => import(/* webpackChunkName: "about" */ '../views/frete/CadastrarFreteView.vue')
   },
   {
-    path: '/status-frete/:id',
+    path: '/status-frete-transporte/:id',
     name: 'Status-Frete',
-    // props: (router) => ({ id: router.params.id }),
-    component: () => import(/* webpackChunkName: "about" */ '../views/frete/StatusFreteView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/frete/StatusFreteTransporteView.vue')
+  },
+  {
+    path: '/status-interrompido/:id',
+    name: 'Status-Interrompido',
+    component: () => import(/* webpackChunkName: "about" */ '../views/frete/StatusInterrompidoView.vue')
+  },
+  {
+    path: '/status-cancelado/:id',
+    name: 'Status-Cancelado',
+    component: () => import(/* webpackChunkName: "about" */ '../views/frete/StatusCanceladoView.vue')
+  },
+  {
+    path: '/status-faturado/:id',
+    name: 'Status-Faturado',
+    component: () => import(/* webpackChunkName: "about" */ '../views/frete/StatusFaturadoView.vue')
+  },
+  {
+    path: '/status-carga/:id',
+    name: 'Status-Carga',
+    component: () => import(/* webpackChunkName: "about" */ '../views/frete/StatusCargaView.vue')
+  },
+  {
+    path: '/status-descarga/:id',
+    name: 'Status-Descarga',
+    component: () => import(/* webpackChunkName: "about" */ '../views/frete/StatusDescargaView.vue')
+  },
+  {
+    path: '/detalhar-frete/:id',
+    name: 'Detalhar-Frete',
+    component: () => import(/* webpackChunkName: "about" */ '../views/frete/DetalharFreteView.vue')
   }
 ]
 
