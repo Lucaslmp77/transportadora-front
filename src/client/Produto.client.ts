@@ -13,14 +13,165 @@ export class ProdutoClient {
         })
     }
 
-    public async findById(id: number) : Promise<Produto> {
+    // public async findById(id: number) : Promise<Produto> {
+    //     try {
+    //         return (await this.axiosClient.get<Produto>(`/${id}`)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+
+    // }
+
+    // public async listAll() : Promise<Produto[]> {
+    //     try {
+    //         return (await this.axiosClient.get<Produto[]>(``)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    // public async findByProdutosAtivos() : Promise<Produto[]> {
+    //     try {
+    //         return (await this.axiosClient.get<Produto[]>(`/ativos`)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    // public async cadastrar(produto: Produto) : Promise<void> {
+    //     try {
+    //         return (await this.axiosClient.post(``, produto)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    // public async atualizar(produto: Produto) : Promise<void> {
+    //     try {
+    //         return (await this.axiosClient.put(`/${produto.id}`, produto)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    // public async excluir(produto: Produto) : Promise<void> {
+    //     try {
+    //         return (await this.axiosClient.put(`/${produto.id}`)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    //SUCESSOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
+    // public async cadastrar(produto: Produto) : Promise<void> {
+    //     try {
+    //         return (await this.axiosClient.post(``, produto)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    // public async listAll() : Promise<Produto[]> {
+    //     try {
+    //         return (await this.axiosClient.get<Produto[]>(``)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    // public async excluir(id: number) : Promise<void> {
+    //     try {
+    //         return (await this.axiosClient.put(`/disable/${id}`)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    // public async findById(id: number) : Promise<Produto> {
+    //     try {
+    //         return (await this.axiosClient.get(`/${id}`)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    // public async editar(produto: Produto) : Promise<any> { 
+    //     try {
+    //         return (await this.axiosClient.put(`/${produto.id}`, produto)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    ///////////////////////2 TENTATIVA ////////////////////////////////////////////////////////
+
+    // public async cadastrar(produto: Produto) : Promise<void> {
+    //     try {
+    //         return (await this.axiosClient.post(``, produto)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // } 
+
+    // public async listAll() : Promise<Produto[]> {
+    //     try {
+    //         return (await this.axiosClient.get<Produto[]>(``)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    // public async findById(id: number) : Promise<Produto> {
+    //     try {
+    //         return (await this.axiosClient.get(`/${id}`)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    // public async excluir(id: number) : Promise<any> {
+    //     try{
+    //         return (await this.axiosClient.put(`/disable/${id}`)).data
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    // public async editar(produto: Produto) : Promise<any> {
+    //     try {
+    //         return (await this.axiosClient.put(`/${produto.id}`, produto))
+    //     }
+    //     catch(error:any) {
+    //         return Promise.reject(error.response)
+    //     }
+    // }
+
+    //////////////////////////////////////// 3 TENTATIVA //////////////////////////////////////////////////////
+
+
+    public async cadastrar(produto: Produto) : Promise<void> {
         try {
-            return (await this.axiosClient.get<Produto>(`/${id}`)).data
+            return (await this.axiosClient.post(``, produto)).data
         }
         catch(error:any) {
             return Promise.reject(error.response)
         }
-
     }
 
     public async listAll() : Promise<Produto[]> {
@@ -32,40 +183,30 @@ export class ProdutoClient {
         }
     }
 
-    public async findByProdutosAtivos() : Promise<Produto[]> {
+    public async findById(id: number) : Promise<Produto> {
         try {
-            return (await this.axiosClient.get<Produto[]>(`/ativos`)).data
+            return (await this.axiosClient.get(`/${id}`)).data
         }
         catch(error:any) {
             return Promise.reject(error.response)
         }
     }
 
-    public async cadastrar(produto: Produto) : Promise<void> {
+    public async excluir(id: number): Promise<any> {
         try {
-            return (await this.axiosClient.post(``, produto)).data
+            return (await this.axiosClient.put(`/disable/${id}`)).data
         }
         catch(error:any) {
             return Promise.reject(error.response)
         }
     }
 
-    public async atualizar(produto: Produto) : Promise<void> {
+    public async editar(produto: Produto) : Promise<any> {
         try {
-            return (await this.axiosClient.put(`/${produto.id}`, produto)).data
+            return (await this.axiosClient.put(`${produto.id}`, produto)).data
         }
         catch(error:any) {
             return Promise.reject(error.response)
         }
     }
-
-    public async excluir(produto: Produto) : Promise<void> {
-        try {
-            return (await this.axiosClient.put(`/${produto.id}`)).data
-        }
-        catch(error:any) {
-            return Promise.reject(error.response)
-        }
-    }
-
 }
